@@ -1,6 +1,8 @@
 package com.example.basicscodelab
 
 import android.os.Bundle
+import android.widget.Button
+import androidx.compose.material3.Button
 import androidx.activity.ComponentActivity
 
 import androidx.activity.compose.setContent
@@ -9,12 +11,12 @@ import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+
 import com.example.basicscodelab.ui.theme.BasicsCodelabTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,7 +45,7 @@ private fun Greeting(name: String) {
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
     ) {
-        
+
         Row(modifier = Modifier.padding(24.dp)) {
             Column(modifier = Modifier
                 .weight(1f)
@@ -51,17 +53,17 @@ private fun Greeting(name: String) {
             ) {
                 Text(text = "Hello, ")
                 Text(text = name)
-                
+
             }
-            
+
             ElevatedButton(
                 onClick = { expanded.value = !expanded.value }
             ) {
                 Text(if (expanded.value) "Show less" else "Show more")
-                
-                
+
+
             }
-            
+
         }
     }
 }
@@ -89,4 +91,42 @@ private fun MyApp(
     }
 
 }
+
+
+/**
+ * Adding Onboarding screen
+ */
+
+
+@Composable
+fun OnboardingScreen(modifier: Modifier = Modifier) {
+    // TODO: This state should ne hoisted
+
+    var shouldShowOnboarding by remember { mutableStateOf(true) }
+
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+        Text("Welcome To the basic Codelab!")
+        Button(
+            modifier = Modifier.padding(vertical = 24.dp),
+            onClick = { shouldShowOnboarding = false}
+
+        ) {
+            Text("Continue")
+        }
+    }
+    }
+
+@Preview(showBackground = true, widthDp = 320, heightDp = 230)
+@Composable
+fun OnboardingPreview() {
+    BasicsCodelabTheme {
+        OnboardingScreen()
+
+    }
+}
+
 
