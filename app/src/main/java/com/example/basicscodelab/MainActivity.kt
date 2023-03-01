@@ -78,7 +78,7 @@ fun DefaultPreview() {
 }
 
 @Composable
-private fun MyApp(
+fun MyApp(
     modifier: Modifier = Modifier,
     names: List<String> = listOf("World", "Compose")
 
