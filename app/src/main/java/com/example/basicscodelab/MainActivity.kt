@@ -78,18 +78,8 @@ fun DefaultPreview() {
 }
 
 @Composable
-fun MyApp(
-    modifier: Modifier = Modifier,
-    names: List<String> = listOf("World", "Compose")
-
-) {
-    Column(modifier = Modifier.padding(vertical = 4.dp)) {
-        for (name in names) {
-            Greeting(name = name)
-        }
-
-    }
-
+fun MyApp(modifier: Modifier = Modifier) {
+    Greetings()
 }
 
 
@@ -127,4 +117,20 @@ fun OnboardingPreview() {
     }
 }
 
+// New  Composable Greetings
+
+@Composable
+private fun Greetings(
+    modifier: Modifier = Modifier,
+    names: List<String> = listOf("World", "Compose")
+
+) {
+    Column(modifier = Modifier.padding(vertical = 4.dp)) {
+        for (name in names) {
+            Greeting(name = name)
+        }
+
+    }
+
+}
 
