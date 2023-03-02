@@ -96,8 +96,6 @@ fun MyApp(
 /**
  * Adding Onboarding screen
  */
-
-
 @Composable
 fun OnboardingScreen(modifier: Modifier = Modifier) {
     // TODO: This state should ne hoisted
