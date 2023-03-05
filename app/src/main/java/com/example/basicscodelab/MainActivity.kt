@@ -87,7 +87,10 @@ fun OnboardingScreen(
 @Composable
 private fun Greetings(
     modifier: Modifier = Modifier,
-    names: List<String> = listOf("World", "Compose")
+//    names: List<String> = listOf("World", "Compose")
+names: List<String> = List(1000) { return@List "$" }
+
+
 
 ) {
     Column(modifier = Modifier.padding(vertical = 4.dp)) {
