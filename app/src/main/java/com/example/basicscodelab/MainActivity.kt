@@ -90,7 +90,7 @@ fun OnboardingScreen(
 private fun Greetings(
     modifier: Modifier = Modifier,
 //    names: List<String> = listOf("World", "Compose")
-names: List<String> = List(1000) { return@List "$" }
+names: List<String> = List(1000) { "$it" }
 
 
 
