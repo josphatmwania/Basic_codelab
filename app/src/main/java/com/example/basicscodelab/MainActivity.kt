@@ -7,6 +7,8 @@ import androidx.activity.ComponentActivity
 
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -92,14 +94,26 @@ names: List<String> = List(1000) { return@List "$" }
 
 
 
-) {
-    Column(modifier = Modifier.padding(vertical = 4.dp)) {
-        for (name in names) {
+)
+
+//{
+//    Column(modifier = Modifier.padding(vertical = 4.dp)) {
+//        for (name in names) {
+//            Greeting(name = name)
+//        }
+//
+//    }
+//
+//}
+
+  // Using LazyColumn & Lazy Row
+
+  {
+    LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
+        items(items = names) { name ->
             Greeting(name = name)
         }
-
     }
-
 }
 
 @Preview(showBackground = true, widthDp = 320)
