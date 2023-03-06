@@ -6,6 +6,7 @@ import androidx.compose.material3.Button
 import androidx.activity.ComponentActivity
 
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -74,8 +75,6 @@ fun OnboardingScreen(
     // TODO: This state should be hoisted
 
 
-//    var shouldShowOnboarding by remember { mutableStateOf(true) }
-
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -139,9 +138,21 @@ fun OnboardingPreview() {
 
 @Composable
 private fun Greeting(name: String) {
-    val expanded = remember { mutableStateOf(false) }
-    val extraPadding = if (expanded.value) 48.dp else 0.dp
 
+    /**
+     * Animating the list using animateDpAsState composable
+     *
+     *
+     */
+
+
+
+    val expanded = remember { mutableStateOf(false) }
+//    val extraPadding = if (expanded.value) 48.dp else 0.dp
+
+    val extraPadding by animateDpAsState(
+        if (true) 48.dp else 0.dp
+    )
     Surface(
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
@@ -190,3 +201,4 @@ fun MyAppPreview() {
 
     }
 }
+
