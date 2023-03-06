@@ -14,6 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -41,7 +42,16 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyApp(modifier: Modifier = Modifier) {
-    var shouldShowOnBoarding by remember { mutableStateOf(true)}
+
+
+
+    /**
+     * save each state surviving configuration changes,
+     * This won't destroy state
+     */
+    var shouldShowOnBoarding by rememberSaveable { mutableStateOf(true)}
+
+
 
     Surface(modifier) {
         if (shouldShowOnBoarding) {
@@ -96,17 +106,10 @@ names: List<String> = List(1000) { "$it" }
 
 )
 
-//{
-//    Column(modifier = Modifier.padding(vertical = 4.dp)) {
-//        for (name in names) {
-//            Greeting(name = name)
-//        }
-//
-//    }
-//
-//}
 
-  // Using LazyColumn & Lazy Row
+/**
+ * Using LazyColumn & Lazy Row
+*/
 
   {
     LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
